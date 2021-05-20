@@ -6,7 +6,7 @@ namespace InvestigationStat
 {
     class ParsingScript
     {
-        static string fileLocation = "C:\\Users\\scanl\\Google Drive\\University\\UQ\\Year 3\\Rural Health Project\\365-Outstanding.csv";
+        static string fileLocation = "C:\\Users\\scanl\\Google Drive\\University\\UQ\\Year 3\\Rural Remote Medicine\\Rural Health Project\\365-Outstanding.csv";
 
         static void Main(string[] args)
         {
@@ -56,8 +56,10 @@ namespace InvestigationStat
                 int us = 0;
 
                 int mri_knee = 0;
-                int mri_brain = 0;
+                int mri_head = 0;
                 int mri_spine = 0;
+                int mri_elbow = 0;
+                int mri_hip = 0;
 
                 foreach (var pt in uniquePatients)
                 {
@@ -87,10 +89,17 @@ namespace InvestigationStat
                             mri++;
                             if (investigation.ToLower().Contains("knee"))
                                 mri_knee++;
-                            if (investigation.ToLower().Contains("brain"))
-                                mri_brain++;
-                            if (investigation.ToLower().Contains("spine"))
+                            if (investigation.ToLower().Contains("brain") ||
+                                investigation.ToLower().Contains("head"))
+                                mri_head++;
+                            if (investigation.ToLower().Contains("spine") ||
+                                investigation.ToLower().Contains("cervical") ||
+                                investigation.ToLower().Contains("lumbar"))
                                 mri_spine++;
+                            if (investigation.ToLower().Contains("elbow"))
+                                mri_elbow++;
+                            if (investigation.ToLower().Contains("hip"))
+                                mri_hip++;
                         }
                     }
                 }
@@ -101,8 +110,10 @@ namespace InvestigationStat
                 Console.WriteLine("MRI: " + mri);
 
                 Console.WriteLine("MRI_Knee: " + mri_knee);
-                Console.WriteLine("MRI_Brain: " + mri_brain);
+                Console.WriteLine("MRI_Head: " + mri_head);
                 Console.WriteLine("MRI_Spine: " + mri_spine);
+                Console.WriteLine("MRI_Elbow: " + mri_elbow);
+                Console.WriteLine("MRI_Hip: " + mri_hip);
             }
         }
     }
