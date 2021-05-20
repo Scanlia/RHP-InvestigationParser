@@ -6,7 +6,7 @@ namespace InvestigationStat
 {
     class ParsingScript
     {
-        static string fileLocation = "C:\\Users\\scanl\\Google Drive\\University\\UQ\\Year 3\\Rural Remote Medicine\\Rural Health Project\\365-Outstanding.csv";
+        static string fileLocation = "C:\\Users\\scanl\\Google Drive\\University\\UQ\\Year 3\\Rural Remote Medicine\\Rural Health Project\\365-All.csv";
 
         static void Main(string[] args)
         {
@@ -60,6 +60,8 @@ namespace InvestigationStat
                 int mri_spine = 0;
                 int mri_elbow = 0;
                 int mri_hip = 0;
+                int mri_ankle = 0;
+                int mri_shoulder = 0;
 
                 foreach (var pt in uniquePatients)
                 {
@@ -100,6 +102,11 @@ namespace InvestigationStat
                                 mri_elbow++;
                             if (investigation.ToLower().Contains("hip"))
                                 mri_hip++;
+                            if (investigation.ToLower().Contains("shoulder"))
+                                mri_shoulder++;
+                            if (investigation.ToLower().Contains("ankle") ||
+                                investigation.ToLower().Contains("heel"))
+                                mri_ankle++;
                         }
                     }
                 }
@@ -114,6 +121,8 @@ namespace InvestigationStat
                 Console.WriteLine("MRI_Spine: " + mri_spine);
                 Console.WriteLine("MRI_Elbow: " + mri_elbow);
                 Console.WriteLine("MRI_Hip: " + mri_hip);
+                Console.WriteLine("MRI_Shoulder: " + mri_shoulder);
+                Console.WriteLine("MRI_Ankle: " + mri_ankle);
             }
         }
     }
